@@ -1,0 +1,15 @@
+<%= form_with model: book, local:true do |f| %>
+  <div class="form-group row">
+    <%= f.label :Title %>
+    <%= f.text_field :title, class: "col-xs-12 form-control book_title" %>
+  </div>
+
+  <div class="form-group row">
+  	<%= f.label :Opinion %>
+    <%= f.text_area :body, class: "col-xs-12 form-control book_body" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit class: "btn btn-success col-xs-12" %>
+  </div>
+<% end %>

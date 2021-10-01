@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers2</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+  </head>
+
+  <body>
+    <header class="navbar navbar-fixed-top navbar-inverse" style="background-color:#343a40">
+      <div class="container">
+        <nav class="nav navbar-left">
+            <span class="title">
+              <%= link_to root_path, class:"btn btn-link" do %>
+              Bookers
+              <% end %>
+            </span>
+        </nav>
+        <nav>
+          <ul class="nav navbar-right">
+            <% if user_signed_in? %>
+              <li id=""><%= link_to user_path(current_user), class:"fas fa-home nav-link text-light" do %>
+                Home
+                <% end %>
+              </li>
+              <li id="">
+                <%= link_to users_path, class:"fas fa-users nav-link text-light" do %>
+                Users
+                <% end %>
+              </li>
+              <li id="">
+                <%= link_to books_path, class:"fas fa-book-open nav-link text-light" do %>
+                Books
+                <% end %>
+              </li>
+              <li id="">
+                <%= link_to destroy_user_session_path, method: :delete, class:"fas fa-sign-out-alt nav-link text-light" do %>
+                Logout
+                <% end %>
+              </li>
+            <% else %>
+              <li class="">
+                <%= link_to root_path, class:"fas fa-home nav-link text-light" do %>
+                Home
+                <% end %>
+              </li>
+              <li class="">
+                <%= link_to home_about_path, class:"fas fa-link nav-link text-light" do %>
+                About
+                <% end %>
+              </li>
+              <li class="">
+                <%= link_to new_user_registration_path, class:"fas fa-user-plus nav-link text-light" do %>
+                sign up
+                <% end %>
+              </li>
+              <li class="">
+                <%= link_to new_user_session_path, class:"fas fa-sign-in-alt nav-link text-light" do %>
+                login
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        </nav>
+      </div>
+    </header>
+  
+    <div class="body">
+      <p class="notice"><%= notice %></p>
+
+      <%= yield %>
+
+
+      <footer>
+        <div class="row">
+          <div class="mx-auto">
+            <p>CopyRight Infratop.inc</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+  </body>
+</html>
+
+
