@@ -58,9 +58,20 @@ class BooksController < ApplicationController
     end
   end
 
+  def copy
+    @old_book = Book.find_by(id: params[:book_id])
+    @copy_book = @old_book.deep_clone
+    downloadImage = @old_book.image.download  # 画像を一時的に保存（refile backendのメソッド）
+    @copy_book.image_id = "" # cloneした画像idとの繋がりを切る
+    @copy_book.image = downloadImage # 新しく画像をアタッチ
+    @copy_book.title = "[COPY]#{@old_book.title}"
+    @copy_book.save
+    redirect_to books_path
+  end
+
   private
     def book_params
-      params.require(:book).permit(:title, :body)
+      params.require(:book).permit(:title, :body, :image)
     end
     
     def user_params

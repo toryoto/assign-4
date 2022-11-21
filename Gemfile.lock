@@ -83,6 +83,8 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.9)
     crass (1.0.6)
+    deep_cloneable (3.2.0)
+      activerecord (>= 3.1.0, < 8)
     devise (4.8.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -295,6 +297,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   coffee-rails (~> 4.2)
+  deep_cloneable
   devise
   factory_bot_rails
   faker
@@ -303,6 +306,7 @@ DEPENDENCIES
   jquery-rails
   kaminari (~> 1.2.1)
   listen (>= 3.0.5, < 3.2)
+  mini_magick (~> 4.8)
   puma (~> 3.11)
   rails (~> 5.2.5)
   refile!

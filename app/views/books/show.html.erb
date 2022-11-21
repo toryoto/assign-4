@@ -39,6 +39,8 @@
                   </p>
                 <% end %>
               </td>
+              <td><%= attachment_image_tag @book, :image, format: 'jpeg', size: '100x100' %></td>
+              <td><%= link_to book_copy_path(@book.id), data: { confirm: 'コピーしますか？' } do %>コピーする<% end %></td>
               
               <% if @book.user_id == current_user.id %>
                 <td><%= link_to "Edit", edit_book_path(@book), class:"btn btn-success"%></td>

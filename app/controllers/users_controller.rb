@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  require 'open-uri'
   
   before_action :authenticate_user!
 
@@ -9,6 +10,19 @@ class UsersController < ApplicationController
     @favorite = Favorite.new
     @book_comments = @book.book_comments
     @book_comment = BookComment.new
+    p Refile.attachment_url(@user, :profile_image)
+    p 'あいう'
+    p @user.profile_image_id
+
+    # imageIo = @user.profile_image.to_io
+    # image = MiniMagick::Image.open(imageIo)
+    # debugger
+    #p image
+    p 12345
+
+    # File.open("aaaaa.jpg", "wb") do |file|
+    #   image.write(file)
+    # end
   end
 
   def index
@@ -16,6 +30,21 @@ class UsersController < ApplicationController
     @users = User.all
     @book = Book.new
     @books = Book.all
+
+    user2 = @users.find(2).dup
+    p user2
+    imageIo = @users.find(2).profile_image.to_io
+    image = MiniMagick::Image.open(imageIo)
+    #file = @user.profile_image
+    File.open("aaaaa.jpg", "wb") do |file|
+      image.write(file)
+    end
+    # File.open("aaaaa.jpg", "rb") do |file|
+    # end
+    #user2.save
+
+    # p image.signature
+
   end
 
   def edit
